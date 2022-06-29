@@ -12,22 +12,15 @@ export default function Login(){
 
   const dispatch=useDispatch()
  const singinperson=()=>{
-    try{
       current.forEach(data => {
       if (email.current.value===data.email && password.current.value ===data.password &&email.current.value!=="" &&password.current.value!=="") {
         dispatch(createAddPersonAction(email.current.value))
         window.location='/water'
         alert('登入成功')
-    
-        
-        throw new Error('End')
       }else{
         window.location='/login'
       }
     })
-  }catch(e){
-    console.log(e);
-  }
 }
     return (
     <div>
