@@ -25,7 +25,6 @@ export default function Register(){
   }
     return (
       <div>
-        <div>
           <div className="main-content">
             {/* <!-- Navbar --> */}
             <nav className="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
@@ -143,8 +142,7 @@ export default function Register(){
                 </div>
               </div>
             </div>
-          </div>
-          {/* <!-- Footer --> */}
+                      {/* <!-- Footer --> */}
           <footer className="py-5" style={{ background: ' #172b4d' }}>
             <div className="container">
               <div className="row align-items-center justify-content-xl-between">
@@ -172,7 +170,7 @@ export default function Register(){
               </div>
             </div>
           </footer>
+          </div>
         </div>
-      </div>
     )
   }
