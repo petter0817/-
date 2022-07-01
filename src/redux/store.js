@@ -8,6 +8,7 @@ import { createStore,applyMiddleware,combineReducers} from "redux";
 import personReducer from "./reducers/person";
 //引入redux-thunk,用於支持異步action
 import thunk from "redux-thunk";
+//引入redux-persist將資料緩存到瀏覽器中
 import { persistStore,persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 //引入redux-devtools-extension

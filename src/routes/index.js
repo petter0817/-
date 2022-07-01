@@ -41,6 +41,6 @@ export default[
     },
     {
         path:'/',
-        element:<Navigate to="/register"/>
+        element:<Navigate to="/login"/>
     },
 ]

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 export default function Login(){
   const email=useRef()
   const password=useRef()
+  //抓取redux資料賦予到current
   const current=useSelector(state=>{
     return state.rens
   })
@@ -13,6 +14,8 @@ export default function Login(){
   const dispatch=useDispatch()
  const singinperson=()=>{
     try{
+      //用forEach迴圈讀取current裡的資料，判斷登入email跟password是否在redux有這筆資料
+      //成功的話告訴redux保存登入的email，再實現跳轉到water
       current.forEach(data => {
       if (email.current.value===data.email && password.current.value ===data.password &&email.current.value!=="" &&password.current.value!=="") {
         dispatch(createAddPersonAction(email.current.value))

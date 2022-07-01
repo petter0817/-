@@ -34,6 +34,7 @@ export default function Taichung() {
           },
           {}
         )
+        //更新狀態
         setWeatherElement(prevState=>({
           ...prevState,
           observactionTime: locationData.time.obsTime,

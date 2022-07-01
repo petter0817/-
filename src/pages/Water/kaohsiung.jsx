@@ -32,6 +32,7 @@ export default function Kaohsiung() {
           },
           {}
         )
+        //更新狀態
         setWeatherElement(prevState=>({
           ...prevState,
           observactionTime: locationData.time.obsTime,

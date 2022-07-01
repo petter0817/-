@@ -14,6 +14,8 @@ export default function Register(){
     const email=personEmail.current.value
     const password=personPassword.current.value
     const checkpassword=personCheckpassword.current.value
+    //判斷密碼跟檢查密碼是否相同還有名字email密碼檢查密碼是否為空值，
+    //成功的話，告訴store，保存 id name email password checkpassword 然後跳轉到login
    if(password===checkpassword && password!==""&& name!=="" &&email!=="" &&checkpassword!==""){
      dispatch(createAddPersonAction({id:Date.now(),name,email,password,checkpassword}))
     alert('註冊成功')

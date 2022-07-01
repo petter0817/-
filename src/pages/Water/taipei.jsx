@@ -34,6 +34,7 @@ function Taipei() {
           },
           {}
         )
+        //更新狀態
         setWeatherElement(prevState=>({
           ...prevState,
           observactionTime: locationData.time.obsTime,

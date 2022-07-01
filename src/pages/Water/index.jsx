@@ -5,6 +5,7 @@ import { NavLink, Outlet } from 'react-router-dom'
 
 
 export default function Water() {
+  //抓取redux資料賦予到name上
    const name=useSelector(state=>{
      return state.rens
    })
@@ -63,6 +64,7 @@ export default function Water() {
                   <div className="media align-items-center">
                     <i className="ni ni-circle-08"></i>
                     <div className="media-body ml-2 d-none d-lg-block">
+                      {/* 渲染redux第０筆資料，因為login告訴redux誰登入了，所以redux這邊會新增一筆只有email的資料在第０筆 */}
                       <span className="mb-0 text-sm font-weight-bold">{name[0]}</span>
                     </div>
                     <div href="#!" onClick={clickTOLogin} className="dropdown-item">
