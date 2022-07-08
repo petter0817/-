@@ -13,13 +13,15 @@ import { persistStore,persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 //引入redux-devtools-extension
 import {composeWithDevTools} from "redux-devtools-extension"
+import loggingreducer from "./reducers/logging";
 
 const persistConfig={
     key:'root',
     storage:storage,
 }
 const allreducer=combineReducers({
-    rens:personReducer
+    rens:personReducer,
+    login:loggingreducer
 })
 const myPersistReducer=persistReducer(persistConfig,allreducer)
 const store=createStore(myPersistReducer,composeWithDevTools(applyMiddleware(thunk)))

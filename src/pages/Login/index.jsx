@@ -1,44 +1,46 @@
-import React, { useRef } from 'react'
-import {NavLink} from 'react-router-dom'
-import {createAddPersonAction} from '../../redux/actions/person'
+import React, { useEffect, useRef} from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { createIsLogging } from '../../redux/actions/logging'
 import { useDispatch, useSelector } from 'react-redux'
 
-export default function Login(){
-  const email=useRef()
-  const password=useRef()
+export default function Login() {
+  let navigate = useNavigate()
+  const email = useRef()
+  const password = useRef()
+  // console.log(isLogging);
   //抓取redux資料賦予到current
-  const current=useSelector(state=>{
+  const current = useSelector(state => {
     return state.rens
   })
-
-  const dispatch=useDispatch()
- const singinperson=()=>{
-    try{
+  const { isLogging } = useSelector(state => state.login)
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    if(isLogging===true){
+      navigate('/water')
+    }
+  })
+  const singinperson = () => {
+    
       //用forEach迴圈讀取current裡的資料，判斷登入email跟password是否在redux有這筆資料
       //成功的話告訴redux保存登入的email，再實現跳轉到water
-      current.forEach(data => {
-      if (email.current.value===data.email && password.current.value ===data.password &&email.current.value!=="" &&password.current.value!=="") {
-        dispatch(createAddPersonAction(email.current.value))
-        window.location='/water'
-        alert('登入成功')
-    
-        
-        throw new Error('End')
-      }else{
-        window.location='/login'
-      }
-    })
-  }catch(e){
-    console.log(e);
-  }
-}
-    return (
+
+      current.map((data) => {
+        if ( email.current.value === data.email && password.current.value === data.password && email.current.value !== "" && password.current.value !== "") {
+          // alert('登入成功')
+          dispatch(createIsLogging({isLogging:true,name:data.name}))
+          navigate('/water')
+        }else{
+          console.log('!!')
+        }
+      })
+    }
+  return (
     <div>
       <div className="main-content">
         <nav className="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
           <div className="container px-4">
             <NavLink className="navbar-brand" to='/login'>
-              <img src="../assets/img/brand/white.png" alt=''/>
+              <img src="../assets/img/brand/white.png" alt='' />
             </NavLink>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
@@ -48,7 +50,7 @@ export default function Login(){
                 <div className="row">
                   <div className="col-6 collapse-brand">
                     <a href="../index.html">
-                      <img src="../assets/img/brand/blue.png" alt=''/>
+                      <img src="../assets/img/brand/blue.png" alt='' />
                     </a>
                   </div>
                   <div className="col-6 collapse-close">
@@ -95,11 +97,11 @@ export default function Login(){
             </svg>
           </div>
         </div>
-        <div className="container mt--8 pb-5" style={{background:' #172b4d'}}>
+        <div className="container mt--8 pb-5" style={{ background: ' #172b4d' }}>
           <div className="row justify-content-center">
             <div className="col-lg-5 col-md-7">
               <div className="card bg-secondary shadow border-0">
-                
+
                 <div className="card-body px-lg-5 py-lg-5">
                   <div className="text-center text-muted mb-4">
                     <small>Or sign in with credentials</small>
@@ -110,7 +112,7 @@ export default function Login(){
                         <div className="input-group-prepend">
                           <span className="input-group-text"><i className="ni ni-email-83"></i></span>
                         </div>
-                        <input className="form-control" placeholder="Email" type="email" ref={email}/>
+                        <input className="form-control" placeholder="Email" type="email" ref={email} />
                       </div>
                     </div>
                     <div className="form-group">
@@ -118,21 +120,21 @@ export default function Login(){
                         <div className="input-group-prepend">
                           <span className="input-group-text"><i className="ni ni-lock-circle-open"></i></span>
                         </div>
-                        <input className="form-control" placeholder="Password" type="password" ref={password}/>
+                        <input className="form-control" placeholder="Password" type="password" ref={password} />
                       </div>
                     </div>
-                  
+
                     <div className="text-center">
-                        <button type="button" className="btn btn-primary my-4" onClick={singinperson}>Sign in</button>
+                      <button type="button" className="btn btn-primary my-4" onClick={singinperson}>Sign in</button>
                     </div>
                   </form>
                 </div>
               </div>
-            
+
             </div>
           </div>
         </div>
-        <footer className="py-5" style={{background:' #172b4d'}}>
+        <footer className="py-5" style={{ background: ' #172b4d' }}>
           <div className="container">
             <div className="row align-items-center justify-content-xl-between">
               <div className="col-xl-6">
@@ -162,7 +164,7 @@ export default function Login(){
       </div>
     </div>
   )
-}
+  }
 
 
 
