@@ -21,7 +21,7 @@ const persistConfig={
 }
 const allreducer=combineReducers({
     rens:personReducer,
-    login:loggingreducer
+    login:loggingreducer,
 })
 const myPersistReducer=persistReducer(persistConfig,allreducer)
 const store=createStore(myPersistReducer,composeWithDevTools(applyMiddleware(thunk)))

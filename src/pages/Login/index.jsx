@@ -7,8 +7,6 @@ export default function Login() {
   let navigate = useNavigate()
   const email = useRef()
   const password = useRef()
-  // console.log(isLogging);
-  //抓取redux資料賦予到current
   const current = useSelector(state => {
     return state.rens
   })
@@ -20,17 +18,13 @@ export default function Login() {
     }
   })
   const singinperson = () => {
-    
-      //用forEach迴圈讀取current裡的資料，判斷登入email跟password是否在redux有這筆資料
-      //成功的話告訴redux保存登入的email，再實現跳轉到water
-
       current.map((data) => {
         if ( email.current.value === data.email && password.current.value === data.password && email.current.value !== "" && password.current.value !== "") {
-          // alert('登入成功')
+          alert('登入成功')
           dispatch(createIsLogging({isLogging:true,name:data.name}))
           navigate('/water')
         }else{
-          console.log('!!')
+          console.log()
         }
       })
     }

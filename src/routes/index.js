@@ -2,9 +2,9 @@ import { Navigate } from "react-router-dom"
 import Login from "../pages/Login"
 import Register from "../pages/Register"
 import Water from "../pages/Water"
-import Kaohsiung from "../pages/Water/kaohsiung"
-import Taipei from "../pages/Water/taipei"
-import Taichung from "../pages/Water/taichung"
+import City from "../pages/Water/City"
+import All from "../pages/Water/All"
+import Headercity from "../pages/Water/Headercity"
 
 
 export default [
@@ -21,22 +21,21 @@ export default [
         element: <Water />,
         children: [
             {
-                path: 'kaohsiung',
-                element: <Kaohsiung />
+                path: 'city',
+                element: <City />,
             },
             {
-                path: 'taipei',
-                element: <Taipei />
+                path: 'all',
+                element: <All />
             },
             {
-                path: 'taichung',
-                element: <Taichung />
+                path: 'headercity',
+                element:<Headercity />
             },
-
             {
                 path: '/water',
-                element: <Navigate to="/water/taipei" />
-            },
+                element: <Navigate to="water/city/all" />
+            }
         ]
     },
     {
